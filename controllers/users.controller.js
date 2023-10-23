@@ -49,10 +49,11 @@ const usersPut = async (req, res = response) => {
 const usersDelete = async (req, res = response) => {
   const { id } = req.params;
 
-  const user = await User.findByIdAndUpdate(id, { state: false });
+  // No lo elimino fisicamente, solo cambio su status a false
+  const user = await User.findByIdAndUpdate(id, { status: false });
 
   res.json({
-    user,
+    userDeleted: user,
   });
 };
 
